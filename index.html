@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Login Form</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form action="#" method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username2324" name="username" required=""><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password2324" name="password" required=""><br><br>
+
+        <button type="submit">Login</button>
+        <button type="button" onclick="publish()">Publish</button>
+    </form>
+
+    <script>
+        let userCount = 2; // Start from 2 since the initial IDs are 'username' and 'password'
+        let passCount = 2;
+        function publish() {
+            // Update the IDs dynamically
+            document.getElementById('username').id = 'user' + userCount;
+            document.getElementById('password').id = 'pass' + passCount;
+
+            // Update the form action dynamically
+              // Construct the new URL dynamically
+            const newURL = `http://localhost:8000/template/login.html?user=user${userCount}&pass=pass${passCount}`;
+
+            // Update the browser's address bar without reloading the page
+            window.history.pushState({}, '', newURL);
+            // Alert the user
+            alert(`IDs updated: Username -> user${userCount}, Password -> pass${passCount}`);
+            userCount++;
+            passCount++;
+        }
+    </script>
+</body>
+</html>
